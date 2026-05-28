@@ -1,19 +1,29 @@
-import '../pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'services/note_service.dart';
+import 'services/widget_service.dart';
+import 'pages/home_page.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await WidgetService.init();
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => NoteService(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
+      title: 'Bloc-Notes',
       debugShowCheckedModeBanner: false,
-      title: 'Block note',
       home: HomePage(),
     );
   }
