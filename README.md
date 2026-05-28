@@ -25,11 +25,37 @@ Application mobile de prise de notes développée avec Flutter.
 | WidgetKit (iOS)   | Widget écran d'accueil iOS 14+ |
 | AppWidgetProvider | Widget écran d'accueil Android |
 
+A mobile note-taking application built with Flutter.
+
+---
+
+## Features
+
+- Create, edit and delete notes
+- Real-time search by title or content
+- Custom colors for each note
+- Sort by date (newest / oldest) or by title (A→Z / Z→A)
+- Note counter displayed in the AppBar
+- Home screen widget (Android & iOS) showing the counter and latest note
+
+---
+
+## Technologies
+
+| Technology        | Role                            |
+|-------------------|---------------------------------|
+| Flutter           | Cross-platform UI framework     |
+| Provider          | State management                |
+| home_widget       | Flutter to native widget bridge |
+| WidgetKit (iOS)   | iOS 14+ home screen widget      |
+| AppWidgetProvider | Android home screen widget      |
+
 ---
 
 ## Installation
 
 ```bash
+
 # Cloner le dépôt
 git clone https://github.com/AB-060/Block-Notes.git
 cd Block-Notes
@@ -38,10 +64,21 @@ cd Block-Notes
 flutter pub get
 
 # Lancer l'application
+
+# Clone the repository
+git clone https://github.com/AB-060/Block-Notes.git
+cd Block-Notes
+
+# Install dependencies
+flutter pub get
+
+# Run the application
+
 flutter run
 ```
 
 ---
+
 
 ## Widget d'écran d'accueil
 
@@ -56,9 +93,24 @@ Informations affichées :
 
 Tailles supportées : Small (2x2) et Medium (4x2).
 
+## Home Screen Widget
+
+The widget updates automatically after every add, edit or delete operation.
+
+Displayed information:
+
+- Total number of notes
+- Title and preview of the latest note
+- Color associated with the note
+- Creation date
+
+Supported sizes: Small (2x2) and Medium (4x2).
+
+
 ---
 
 ## Branches
+
 
 | Branche | Contenu                                  |
 |---------|------------------------------------------|
@@ -72,3 +124,17 @@ Tailles supportées : Small (2x2) et Medium (4x2).
 ## Auteur
 
 Développé par AB-060.
+
+| Branch | Content                                  |
+|--------|------------------------------------------|
+| main   | Stable version                           |
+| p1     | Basic features (CRUD)                    |
+| p2     | Search and sorting                       |
+| p3     | Home screen widget (Android & iOS)       |
+
+---
+
+## Author
+
+Developed by AB-060.
+
