@@ -1,12 +1,8 @@
 import 'package:flutter/foundation.dart';
 import '../models/note.dart';
+import 'widget_service.dart';
 
-enum SortOption {
-  dateDesc,  // récent d'abord (défaut)
-  dateAsc,   // ancien d'abord
-  titleAsc,  // A → Z
-  titleDesc, // Z → A
-}
+enum SortOption { dateDesc, dateAsc, titleAsc, titleDesc }
 
 class NoteService extends ChangeNotifier {
   final List<Note> _notes = [];
@@ -38,6 +34,7 @@ class NoteService extends ChangeNotifier {
 
   void addNote(Note note) {
     _notes.insert(0, note);
+    _syncWidget();
     notifyListeners();
   }
 
@@ -45,12 +42,14 @@ class NoteService extends ChangeNotifier {
     final index = _notes.indexWhere((n) => n.id == note.id);
     if (index != -1) {
       _notes[index] = note;
+      _syncWidget();
       notifyListeners();
     }
   }
 
   void deleteNote(String id) {
     _notes.removeWhere((n) => n.id == id);
+    _syncWidget();
     notifyListeners();
   }
 
@@ -71,4 +70,6 @@ class NoteService extends ChangeNotifier {
             n.contenu.toLowerCase().contains(q))
         .toList();
   }
+
+  void _syncWidget() => WidgetService.update(notes);
 }
